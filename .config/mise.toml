@@ -1,0 +1,20 @@
+[tools]
+node = "24"
+pnpm = "11"
+
+[tasks.clean]
+description = "clean it"
+run = "rm -rf node_modules && rm -rf dist"
+
+[tasks.tidy]
+description = "tidy it"
+run = "pnpm install"
+
+[tasks.lint]
+description = "lint it"
+run = "pnpm lint"
+depends = ["tidy"]
+
+[tasks.build]
+description = "build it"
+run = "pnpm build"
