@@ -1,10 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { createFileRoute } from '@tanstack/react-router'
+import reactLogo from '../assets/react.svg'
+import viteLogo from '../assets/vite.svg'
+import heroImg from '../assets/hero.png'
+import '../App.css'
 
-function App() {
+export const Route = createFileRoute('/')({
+  component: Home,
+})
+
+function Home() {
   const [count, setCount] = useState(0)
 
   return (
@@ -18,7 +23,8 @@ function App() {
         <div>
           <h1>Get started</h1>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+            Edit <code>src/routes/index.tsx</code> and save to test{' '}
+            <code>HMR</code>
           </p>
         </div>
         <button
@@ -41,9 +47,8 @@ function App() {
           <p>Your questions, answered</p>
           <ul>
             <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
+              <a href="https://tanstack.com/start" target="_blank">
+                Explore TanStack Start
               </a>
             </li>
             <li>
@@ -59,10 +64,10 @@ function App() {
             <use href="/icons.svg#social-icon"></use>
           </svg>
           <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
+          <p>Join the TanStack community</p>
           <ul>
             <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
+              <a href="https://github.com/TanStack/router" target="_blank">
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -74,7 +79,7 @@ function App() {
               </a>
             </li>
             <li>
-              <a href="https://chat.vite.dev/" target="_blank">
+              <a href="https://tlinz.com/discord" target="_blank">
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -86,7 +91,7 @@ function App() {
               </a>
             </li>
             <li>
-              <a href="https://x.com/vite_js" target="_blank">
+              <a href="https://x.com/tan_stack" target="_blank">
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -98,7 +103,7 @@ function App() {
               </a>
             </li>
             <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+              <a href="https://bsky.app/profile/tanstack.com" target="_blank">
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -118,5 +123,3 @@ function App() {
     </>
   )
 }
-
-export default App
