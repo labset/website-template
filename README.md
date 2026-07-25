@@ -1,75 +1,130 @@
-# React + TypeScript + Vite
+# @labset/website-template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal starter for content-driven websites: a landing page and an MDX blog,
+server-rendered and statically prerendered. Fork it and make it yours.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript**
+- **TanStack Start** (SSR + static prerendering) on **TanStack Router** file-based routing, built with **Vite**
+- **Tailwind CSS v4** (`@tailwindcss/vite`) with OKLCH design tokens + light/dark themes
+- **shadcn** components on **Base UI** primitives (`base-luma` style)
+- **MDX** content layer (`@mdx-js/rollup`)
+- **Inter** via `@fontsource-variable/inter`, icons from `lucide-react`
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Structure
 
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+src/
+├── components/
+│   ├── ui/                     # shadcn primitives: button, card, badge, sheet, separator
+│   ├── mdx/                    # MDX element styling + custom components (callout)
+│   ├── root-document.tsx       # the <html> shell (head, body, providers, scripts)
+│   ├── site-layout.tsx         # header + main + footer shell
+│   ├── site-header.tsx         # sticky nav + mobile sheet + theme toggle
+│   ├── site-footer.tsx
+│   ├── landing-page.tsx        # composes the home sections
+│   ├── hero-section.tsx
+│   ├── features-section.tsx    # Card + Badge feature grid
+│   ├── latest-posts-section.tsx# blog stream on the home page
+│   ├── blog-index.tsx          # /blog listing
+│   ├── blog-post.tsx           # single post presentation
+│   ├── blog-post-page.tsx      # /blog/$slug page (params → post)
+│   ├── post-card.tsx           # shared post card
+│   ├── not-found.tsx
+│   └── theme-toggle.tsx
+├── content/
+│   ├── posts.ts                # import.meta.glob loader + meta validation
+│   ├── authors.ts              # author registry
+│   └── posts/YYYY/MM/*.mdx     # the posts themselves
+├── providers/
+│   └── theme/                  # context, provider, hook (light/dark/system)
+├── lib/
+│   ├── site.ts                 # SITE_URL/SITE_NAME + socialMeta() helper
+│   └── utils.ts                # cn() class-merge helper
+├── routes/
+│   ├── __root.tsx              # document head: meta, theme script, canonical strategy
+│   ├── index.tsx               # → LandingPage
+│   ├── 404.tsx                 # prerendered to dist/client/404.html
+│   └── blog/
+│       ├── index.tsx           # → BlogIndex
+│       └── $slug.tsx           # → BlogPostPage
+├── router.tsx                  # getRouter() for TanStack Start
+├── index.css                   # Tailwind import + theme tokens
+├── mdx-env.d.ts                # types for *.mdx modules
+└── routeTree.gen.ts            # generated by the Start/Router plugin (gitignored)
 ```
+
+Each file has a single role. Routes are thin — they wire the URL, load data, set
+`head()` metadata, and point `component:` at a dedicated component. There is no
+`index.html`; the document is rendered by `__root.tsx` + `root-document.tsx`.
+
+Add a page by dropping a file in `src/routes/`; the plugin regenerates
+`routeTree.gen.ts` on the next dev/build.
+
+## Writing posts
+
+Posts are MDX files under `src/content/posts/YYYY/MM/`. The **filename is the
+slug** (`hello.mdx` → `/blog/hello`); the folders only keep things tidy. Each
+post exports a `meta` object, validated at build time:
+
+```mdx
+export const meta = {
+  title: 'Hello, world',
+  description: 'A one-line summary used in listings and social cards.',
+  author: 'hasnae',            // must exist in src/content/authors.ts
+  date: '2026-07-24',          // YYYY-MM-DD, drives sort order
+  readingTime: '4 min read',
+  tags: ['intro'],
+}
+
+Write **Markdown** here. Drop in React components when you need them:
+
+<Callout>Posts are MDX, so components work inline.</Callout>
+```
+
+Markdown elements are styled by `src/components/mdx/mdx-components.tsx`; add
+custom components (like `Callout`) alongside it. Add authors in
+`src/content/authors.ts`.
+
+## Rendering
+
+The site is statically prerendered at build time (`prerender` +
+`crawlLinks` in `vite.config.ts`), so every route reachable from the homepage
+ships as crawlable HTML with content already in the markup, plus an explicit
+`/404`. The build writes static assets to `dist/client/` and the SSR runtime to
+`dist/server/`; deploy `dist/client/` for a static host.
+
+## SEO
+
+`src/lib/site.ts` holds `SITE_URL`, `SITE_NAME`, and `socialMeta()` (Open Graph
++ Twitter tags). Each route sets its own `<title>`, description, and a
+self-referencing canonical link in `head()`. **Set `SITE_URL` to your deployed
+origin** before shipping.
+
+## Development
+
+Using pnpm:
+
+```sh
+pnpm dev       # start the dev server (HMR)
+pnpm build     # build + prerender, then type-check (vite build && tsc -b)
+pnpm preview   # serve the production build locally
+pnpm lint      # run ESLint
+```
+
+Or via the mise tasks (`.config/mise.toml`), which pin Node + pnpm:
+
+```sh
+mise run lint    # tidy → lint
+mise run build   # build + prerender + type-check
+```
+
+## Adding shadcn components
+
+```sh
+pnpm dlx shadcn@latest add <component>
+```
+
+Components land in `src/components/ui/`. The registry style and aliases are
+configured in `components.json`.
