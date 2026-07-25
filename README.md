@@ -92,8 +92,11 @@ ships as crawlable HTML with content already in the markup, plus an explicit
 
 `src/lib/site.ts` holds `SITE_URL`, `SITE_NAME`, and `socialMeta()` (Open Graph
 + Twitter tags). Each route sets its own `<title>`, description, and a
-self-referencing canonical link in `head()`. **Set `SITE_URL` to your deployed
-origin** before shipping.
+self-referencing canonical link in `head()`. `SITE_URL` comes from the
+**`VITE_SITE_URL`** env var (see `.env.example`) — set it to your deployed
+origin before shipping. On Vercel it defaults to the project's production
+domain, so deploys via the button above work out of the box; set
+`VITE_SITE_URL` to pin a custom domain.
 
 ## Development
 

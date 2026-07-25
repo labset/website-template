@@ -1,7 +1,11 @@
 // Shared site-wide constants used for canonical URLs and social cards.
-// Change SITE_URL to your deployed origin. No trailing slash; build paths as
-// `${SITE_URL}/blog/...`.
-export const SITE_URL = 'https://example.com'
+// SITE_URL comes from the VITE_SITE_URL env var (set it to your deployed
+// origin); on Vercel it defaults to the project's production domain — see
+// vite.config.ts. Falls back to https://example.com when unset. Any trailing
+// slash is stripped so paths build cleanly as `${SITE_URL}/blog/...`.
+export const SITE_URL = (
+  import.meta.env.VITE_SITE_URL ?? 'https://example.com'
+).replace(/\/+$/, '')
 export const SITE_NAME = 'website-template'
 export const SITE_DESCRIPTION =
   'A minimal starter built with TanStack Start, React, Tailwind, and shadcn — server-rendered, type-safe, and ready to grow.'
