@@ -21,8 +21,8 @@ type NavLink = {
 }
 
 const NAV_LINKS: NavLink[] = [
+  { label: 'Features', to: '/', hash: 'features' },
   { label: 'Blog', to: '/blog' },
-  { label: 'Latest', to: '/', hash: 'latest' },
 ]
 
 const GITHUB_URL = 'https://github.com/labset'
@@ -81,7 +81,7 @@ export function SiteHeader() {
               <SheetHeader>
                 <SheetTitle>{SITE_NAME}</SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-1 px-4">
+              <nav className="flex flex-col gap-1 px-6">
                 {NAV_LINKS.map((link) => (
                   <SheetClose
                     key={link.label}

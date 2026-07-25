@@ -16,8 +16,8 @@ const FOOTER_SECTIONS: { title: string; links: FooterLink[] }[] = [
   {
     title: 'Explore',
     links: [
+      { label: 'Features', to: '/', hash: 'features' },
       { label: 'Blog', to: '/blog' },
-      { label: 'Latest', to: '/', hash: 'latest' },
     ],
   },
   {
