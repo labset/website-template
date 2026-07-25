@@ -1,6 +1,6 @@
 import { createRootRoute } from '@tanstack/react-router'
 
-import { RootDocument } from '@/components/root-document'
+import { RootDocument } from '@/components/layout/root-document'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, socialMeta } from '@/lib/site'
 import appCss from '@/index.css?url'
 

@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 
-import { SiteLayout } from '@/components/site-layout'
+import { SiteLayout } from '@/components/layout/site-layout'
 import { Badge } from '@/components/ui/badge'
 import { mdxComponents } from '@/components/mdx/mdx-components'
 import { getAuthor } from '@/content/authors'

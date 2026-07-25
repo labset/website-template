@@ -16,23 +16,14 @@ server-rendered and statically prerendered. Fork it and make it yours.
 
 ```
 src/
-├── components/
+├── components/                 # grouped by domain, not loose
 │   ├── ui/                     # shadcn primitives: button, card, badge, sheet, separator
 │   ├── mdx/                    # MDX element styling + custom components (callout)
-│   ├── root-document.tsx       # the <html> shell (head, body, providers, scripts)
-│   ├── site-layout.tsx         # header + main + footer shell
-│   ├── site-header.tsx         # sticky nav + mobile sheet + theme toggle
-│   ├── site-footer.tsx
-│   ├── landing-page.tsx        # composes the home sections
-│   ├── hero-section.tsx
-│   ├── features-section.tsx    # Card + Badge feature grid
-│   ├── latest-posts-section.tsx# blog stream on the home page
-│   ├── blog-index.tsx          # /blog listing
-│   ├── blog-post.tsx           # single post presentation
-│   ├── blog-post-page.tsx      # /blog/$slug page (params → post)
-│   ├── post-card.tsx           # shared post card
-│   ├── not-found.tsx
-│   └── theme-toggle.tsx
+│   ├── layout/                 # site chrome: root-document, site-layout, header,
+│   │                           #   footer, theme-toggle, not-found
+│   ├── home/                   # landing-page + its sections (hero, features,
+│   │                           #   latest-posts)
+│   └── blog/                   # blog-index, blog-post, blog-post-page, post-card
 ├── content/
 │   ├── posts.ts                # import.meta.glob loader + meta validation
 │   ├── authors.ts              # author registry

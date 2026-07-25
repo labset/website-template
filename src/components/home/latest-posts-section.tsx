@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 
 import { posts } from '@/content/posts'
-import { PostCard } from '@/components/post-card'
+import { PostCard } from '@/components/blog/post-card'
 
 // The blog stream on the landing page: the few most recent posts, with a link
 // through to the full index.

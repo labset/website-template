@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { NotFound } from '@/components/not-found'
+import { NotFound } from '@/components/layout/not-found'
 
 // Prerendered to dist/client/404.html (see vite.config.ts `pages`) so a static
 // host can serve our branded not-found page for any unmatched URL. In-app

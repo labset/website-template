@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { ThemeToggle } from '@/components/theme-toggle'
+import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 type NavLink = {
   label: string

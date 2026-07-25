@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
 
-import { BlogNotFound, BlogPostPage } from '@/components/blog-post-page'
+import { BlogNotFound, BlogPostPage } from '@/components/blog/blog-post-page'
 import { getPost } from '@/content/posts'
 import { SITE_URL, socialMeta } from '@/lib/site'
 

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from '@tanstack/react-router'
 
-import { SiteLayout } from '@/components/site-layout'
+import { SiteLayout } from '@/components/layout/site-layout'
 import { Button } from '@/components/ui/button'
 
 // Shared presentation for not-found pages: centred within the site shell, with a

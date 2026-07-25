@@ -1,5 +1,5 @@
-import { SiteLayout } from '@/components/site-layout'
-import { PostCard } from '@/components/post-card'
+import { SiteLayout } from '@/components/layout/site-layout'
+import { PostCard } from '@/components/blog/post-card'
 import { posts } from '@/content/posts'
 
 export function BlogIndex() {

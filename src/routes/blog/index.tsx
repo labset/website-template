@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { BlogIndex } from '@/components/blog-index'
+import { BlogIndex } from '@/components/blog/blog-index'
 import { SITE_URL, socialMeta } from '@/lib/site'
 
 const TITLE = 'Blog · website-template'

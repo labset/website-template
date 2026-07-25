@@ -1,7 +1,7 @@
 import { Link, getRouteApi } from '@tanstack/react-router'
 
-import { BlogPost } from '@/components/blog-post'
-import { NotFoundLayout } from '@/components/not-found'
+import { BlogPost } from '@/components/blog/blog-post'
+import { NotFoundLayout } from '@/components/layout/not-found'
 import { Button } from '@/components/ui/button'
 import { getPost } from '@/content/posts'
 
