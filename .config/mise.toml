@@ -18,3 +18,4 @@ depends = ["tidy"]
 [tasks.build]
 description = "build it"
 run = "pnpm build"
+depends = ["lint"]
