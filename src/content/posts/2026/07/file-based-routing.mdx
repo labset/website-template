@@ -1,0 +1,24 @@
+export const meta = {
+  title: 'File-based routing, explained',
+  description:
+    'Each file under src/routes becomes a route. Here is how the root route, index route, and dynamic segments fit together.',
+  author: 'hasnae',
+  date: '2026-07-18',
+  readingTime: '6 min read',
+  tags: ['routing', 'tanstack'],
+}
+
+The `__root.tsx` route owns the HTML document and renders an `Outlet` for its
+children. Every other file under `src/routes` maps to a URL by its name.
+
+## Dynamic segments
+
+Dynamic segments use a `$` prefix: `blog/$slug.tsx` matches `/blog/anything`.
+The matched value arrives as a typed route param, so you never reach for a
+loosely-typed `params` bag.
+
+## The generated route tree
+
+The route tree is generated for you into `routeTree.gen.ts` whenever you run the
+dev server or a build — you never hand-maintain it. Because it is generated,
+navigation, params, and loader data are all checked at compile time.
