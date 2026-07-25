@@ -3,6 +3,8 @@
 A minimal starter for content-driven websites: a landing page and an MDX blog,
 server-rendered and statically prerendered. Fork it and make it yours.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/labset/website-template&project-name=website-template&repository-name=website-template)
+
 ## Stack
 
 - **React 19** + **TypeScript**
