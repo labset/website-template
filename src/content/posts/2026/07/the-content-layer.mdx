@@ -1,0 +1,25 @@
+export const meta = {
+  title: 'An MDX content layer',
+  description:
+    'Posts are MDX files discovered at build time with import.meta.glob. This blog stream is powered by exactly that.',
+  author: 'hasnae',
+  date: '2026-07-11',
+  readingTime: '5 min read',
+  tags: ['content', 'mdx'],
+}
+
+Posts live under `src/content/posts/YYYY/MM/` as MDX — Markdown with the option
+to drop in React components when you need them. Each file exports a `meta`
+object and its body compiles to a component.
+
+## One glob to rule them all
+
+`import.meta.glob('./posts/**/*.mdx', { eager: true })` loads every post module
+up front. We validate each `meta`, map it to a slug and content component, then
+sort by date. Routes consume that single, centralized array.
+
+## Slug from filename
+
+The slug comes from the filename, so the `YYYY/MM` folders keep things tidy
+without affecting URLs. Add a file, and it shows up in the stream — no registry
+to update.

@@ -1,0 +1,24 @@
+name: setup
+description: Install the toolchain with mise and restore pnpm caches.
+
+runs:
+  using: composite
+  steps:
+    - name: Install mise and pinned tools
+      uses: jdx/mise-action@v4.2.0
+      with:
+        version: 2026.7.6
+        cache: true
+
+    - name: Resolve pnpm store directory
+      id: pnpm
+      shell: bash
+      run: echo "dir=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
+
+    - name: Cache pnpm store
+      uses: actions/cache@v6.1.0
+      with:
+        path: ${{ steps.pnpm.outputs.dir }}
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
