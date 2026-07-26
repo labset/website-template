@@ -3,8 +3,18 @@
 A minimal starter for content-driven websites: a landing page and an MDX blog,
 server-rendered and statically prerendered. Fork it and make it yours.
 
-One click to your own copy — see [Deploy](#deploy) for Vercel, Cloudflare
-Workers, and Cloudflare Pages.
+One click to your own copy:
+
+**Vercel**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/labset/website-template&project-name=website-template&repository-name=website-template)
+
+**Cloudflare Workers**
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/labset/website-template)
+
+Build settings, config files, and Cloudflare Pages setup are under
+[Deploy](#deploy).
 
 ## Stack
 
@@ -97,18 +107,15 @@ is `dist/client`. Set `VITE_SITE_URL` to your origin (see [SEO](#seo)).
 
 ### Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/labset/website-template&project-name=website-template&repository-name=website-template)
-
-Click the button (or import the repo). Config lives in `vercel.json`
+Use the button at the top (or import the repo). Config lives in `vercel.json`
 (`outputDirectory: dist/client`, `framework: null`).
 
 ### Cloudflare Workers
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/labset/website-template)
-
-Click the button. Config lives in `wrangler.jsonc` as an assets-only Worker (no
-server code) serving `dist/client`, with `not_found_handling: "404-page"` for
-the prerendered `404.html`. Cloudflare runs `pnpm build`, then `wrangler deploy`.
+Use the button at the top. Config lives in `wrangler.jsonc` as an assets-only
+Worker (no server code) serving `dist/client`, with
+`not_found_handling: "404-page"` for the prerendered `404.html`. Cloudflare runs
+`pnpm build`, then `wrangler deploy`.
 
 ### Cloudflare Pages
 
