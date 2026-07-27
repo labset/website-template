@@ -25,7 +25,7 @@ const NAV_LINKS: NavLink[] = [
   { label: 'Blog', to: '/blog' },
 ]
 
-const GITHUB_URL = 'https://github.com/labset'
+const GITHUB_URL = 'https://github.com/labset/website-template'
 
 export function SiteHeader() {
   return (

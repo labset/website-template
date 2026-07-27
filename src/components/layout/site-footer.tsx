@@ -30,7 +30,7 @@ const FOOTER_SECTIONS: { title: string; links: FooterLink[] }[] = [
   },
   {
     title: 'More',
-    links: [{ label: 'GitHub', href: 'https://github.com/labset' }],
+    links: [{ label: 'GitHub', href: 'https://github.com/labset/website-template' }],
   },
 ]
 
