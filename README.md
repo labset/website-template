@@ -3,6 +3,19 @@
 A minimal starter for content-driven websites: a landing page and an MDX blog,
 server-rendered and statically prerendered. Fork it and make it yours.
 
+One click to your own copy:
+
+**Vercel**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/labset/website-template&project-name=website-template&repository-name=website-template)
+
+**Cloudflare Workers**
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/labset/website-template)
+
+Build settings, config files, and Cloudflare Pages setup are under
+[Deploy](#deploy).
+
 ## Stack
 
 - **React 19** + **TypeScript**
@@ -86,12 +99,41 @@ ships as crawlable HTML with content already in the markup, plus an explicit
 `/404`. The build writes static assets to `dist/client/` and the SSR runtime to
 `dist/server/`; deploy `dist/client/` for a static host.
 
+## Deploy
+
+The output in `dist/client/` is plain static files, so any static host works.
+Everywhere, the **build command** is `pnpm build` and the **publish directory**
+is `dist/client`. Set `VITE_SITE_URL` to your origin (see [SEO](#seo)).
+
+### Vercel
+
+Use the button at the top (or import the repo). Config lives in `vercel.json`
+(`outputDirectory: dist/client`, `framework: null`).
+
+### Cloudflare Workers
+
+Use the button at the top. Config lives in `wrangler.jsonc` as an assets-only
+Worker (no server code) serving `dist/client`, with
+`not_found_handling: "404-page"` for the prerendered `404.html`. Cloudflare runs
+`pnpm build`, then `wrangler deploy`.
+
+### Cloudflare Pages
+
+No one-click button — Cloudflare's deploy button is Workers-only. In the
+dashboard, **Create → Pages → Connect to Git**, then set **Build command**
+`pnpm build` and **Build output directory** `dist/client` (Framework preset:
+none). Pages serves `404.html` automatically. `wrangler.jsonc` is not used by
+Pages.
+
 ## SEO
 
 `src/lib/site.ts` holds `SITE_URL`, `SITE_NAME`, and `socialMeta()` (Open Graph
 + Twitter tags). Each route sets its own `<title>`, description, and a
-self-referencing canonical link in `head()`. **Set `SITE_URL` to your deployed
-origin** before shipping.
+self-referencing canonical link in `head()`. `SITE_URL` comes from the
+**`VITE_SITE_URL`** env var (see `.env.example`) — set it to your deployed
+origin before shipping. On Vercel it defaults to the project's production
+domain, so deploys via the button above work out of the box; set
+`VITE_SITE_URL` to pin a custom domain.
 
 ## Development
 

@@ -5,6 +5,14 @@ import tailwindcss from '@tailwindcss/vite'
 import mdx from '@mdx-js/rollup'
 import path from 'path'
 
+// Default the public site origin to the Vercel production domain when
+// VITE_SITE_URL isn't set explicitly, so the "Deploy with Vercel" button
+// produces correct canonical/OG URLs with no configuration. An explicit
+// VITE_SITE_URL always wins. See src/lib/site.ts.
+if (!process.env.VITE_SITE_URL && process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+  process.env.VITE_SITE_URL = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+}
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [

@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Local env files (keep the example)
+.env
+.env.*
+!.env.example
+
 # TanStack Router (generated)
 src/routeTree.gen.ts
 

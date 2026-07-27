@@ -1,0 +1,13 @@
+{
+  // Cloudflare Workers config for serving the prerendered static site.
+  // Used by the "Deploy to Cloudflare" button and `wrangler deploy`. No Worker
+  // script (`main`) is needed — this is an assets-only Worker. Cloudflare runs
+  // the `build` script from package.json, then serves ./dist/client.
+  "name": "website-template",
+  "compatibility_date": "2026-07-25",
+  "assets": {
+    "directory": "./dist/client",
+    // Serve the prerendered dist/client/404.html for unmatched URLs.
+    "not_found_handling": "404-page"
+  }
+}
