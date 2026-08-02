@@ -33,10 +33,10 @@ importers:
         specifier: ^1.26.0
         version: 1.26.0(react@19.2.8)
       react:
-        specifier: ^19.2.7
+        specifier: ^19.2.8
         version: 19.2.8
       react-dom:
-        specifier: ^19.2.7
+        specifier: ^19.2.8
         version: 19.2.8(react@19.2.8)
       shadcn:
         specifier: ^4.14.0
@@ -58,7 +58,7 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(rollup@4.62.2)
       '@types/node':
-        specifier: ^24.13.2
+        specifier: ^24.13.3
         version: 24.13.3
       '@types/react':
         specifier: ^19.2.17
@@ -67,10 +67,10 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.17)
       '@vitejs/plugin-react':
-        specifier: ^6.0.3
+        specifier: ^6.0.4
         version: 6.0.4(vite@8.1.5(@types/node@24.13.3)(jiti@2.7.0))
       eslint:
-        specifier: ^10.6.0
+        specifier: ^10.7.0
         version: 10.7.0(jiti@2.7.0)
       eslint-plugin-react-hooks:
         specifier: ^7.1.1
@@ -82,13 +82,13 @@ importers:
         specifier: ^17.7.0
         version: 17.7.0
       typescript:
-        specifier: ~6.0.2
+        specifier: ~6.0.3
         version: 6.0.3
       typescript-eslint:
-        specifier: ^8.62.0
+        specifier: ^8.65.0
         version: 8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
       vite:
-        specifier: ^8.1.1
+        specifier: ^8.1.5
         version: 8.1.5(@types/node@24.13.3)(jiti@2.7.0)
 
 packages:
@@ -330,8 +330,8 @@ packages:
   '@fontsource-variable/inter@5.3.0':
     resolution: {integrity: sha512-OupL48va4JNofb97w6NYeF9S7W/kHNKM0Er8Dem5nqi4jeOLrVJDoE8tZEpnMJmtkvNbB1EIPPwHcdkF6b1oUA==}
 
-  '@hono/node-server@1.19.14':
-    resolution: {integrity: sha512-GwtvgtXxnWsucXvbQXkRgqksiH2Qed37H9xHZocE5sA3N8O8O8/8FA3uclQXxXVzc9XBZuEOMK7+r02FmSpHtw==}
+  '@hono/node-server@1.19.17':
+    resolution: {integrity: sha512-dSneS5qhiauZWGDCeK4o695Xd9nUNjviSZCMQrj10eetr8Uln1ucn6bbphOM6UynAMMtNIzZNSpL9vnASJwrPQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
@@ -1120,9 +1120,9 @@ packages:
     resolution: {integrity: sha512-2cGmJupaNgg+QUwVLAucDuWuoMZ6EX9iHDRswZ5lsNYEmwPaRknMPCLZz07yTzVq/83p4o/wzbDZbBrTvGGTIw==}
     engines: {node: '>=18'}
 
-  brace-expansion@5.0.7:
-    resolution: {integrity: sha512-7oFy703dxfY3/NLxC1fh2SUCQ0H9rmAY+5EpDVfXjUTTs+HEwR2nYaqLv+GWcTsumwxPfiz6CzCNkwXwBUwqCA==}
-    engines: {node: 18 || 20 || >=22}
+  brace-expansion@5.0.9:
+    resolution: {integrity: sha512-ScQ4IuvIEF1TMlP7Zt+vjJ//9zlPb2SDcxWxM3bk8s6t6GGdJ7KO1dCcTidOPJKePW30LE/2cT7wCyPho9/Wxg==}
+    engines: {node: 20 || >=22}
 
   braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
@@ -3283,7 +3283,7 @@ snapshots:
 
   '@fontsource-variable/inter@5.3.0': {}
 
-  '@hono/node-server@1.19.14(hono@4.12.31)':
+  '@hono/node-server@1.19.17(hono@4.12.31)':
     dependencies:
       hono: 4.12.31
 
@@ -3364,7 +3364,7 @@ snapshots:
 
   '@modelcontextprotocol/sdk@1.29.0(zod@3.25.76)':
     dependencies:
-      '@hono/node-server': 1.19.14(hono@4.12.31)
+      '@hono/node-server': 1.19.17(hono@4.12.31)
       ajv: 8.20.0
       ajv-formats: 3.0.1(ajv@8.20.0)
       content-type: 1.0.5
@@ -4077,7 +4077,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  brace-expansion@5.0.7:
+  brace-expansion@5.0.9:
     dependencies:
       balanced-match: 4.0.4
 
@@ -5307,7 +5307,7 @@ snapshots:
 
   minimatch@10.2.5:
     dependencies:
-      brace-expansion: 5.0.7
+      brace-expansion: 5.0.9
 
   minimist@1.2.8: {}
 
